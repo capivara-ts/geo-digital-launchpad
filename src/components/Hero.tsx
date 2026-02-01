@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MessageCircle, ArrowRight } from "lucide-react";
+import { MessageCircle, ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import heroBanner from "@/assets/hero-banner.jpeg";
 
@@ -80,18 +80,14 @@ const Hero = () => {
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-3"
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{ 
+          opacity: { delay: 1, duration: 0.5 },
+          y: { duration: 1.5, repeat: Infinity }
+        }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:block"
       >
-        <span className="text-xs text-muted-foreground font-medium">Role para ver mais</span>
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 rounded-full border-2 border-muted-foreground/50 flex justify-center pt-2"
-        >
-          <div className="w-1.5 h-3 bg-primary rounded-full" />
-        </motion.div>
+        <ChevronDown className="w-8 h-8 text-muted-foreground" />
       </motion.div>
     </section>
   );
